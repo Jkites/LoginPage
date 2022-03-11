@@ -1,9 +1,11 @@
 package com.example.loginpage;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -15,14 +17,17 @@ import com.google.android.material.snackbar.Snackbar;
 public class MainActivity extends AppCompatActivity {
     private Button button;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)//api level 26 required
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //defining UI objects
         button = findViewById(R.id.login_button);
         button.setOnClickListener(view -> correctCredentials(view));
     }
+    //Login
+    @RequiresApi(api = Build.VERSION_CODES.O)//api level 26 required
     private void correctCredentials(View view){
         EditText username = findViewById(R.id.editTextTextPersonName);
         EditText password = findViewById(R.id.editTextTextPassword);
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             Snackbar.make(view, "Invalid Credentials", Snackbar.LENGTH_SHORT).show();
         }
     }
+    @RequiresApi(api = Build.VERSION_CODES.O) //api level 26 required
     public void openActivity2(){
         Intent intent = new Intent(this, CalendarPage.class);
         startActivity(intent);

@@ -1,12 +1,22 @@
 package com.example.loginpage;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.time.LocalDateTime;
+
 public class EvaluateCalendar {
     int month;
     int year;
     int day;
 
+    @RequiresApi(api = Build.VERSION_CODES.O) //api level 26 required
     public EvaluateCalendar(){
-
+        LocalDateTime local_time = LocalDateTime.now();
+        this.month = local_time.getMonthValue()-1;
+        this.year = local_time.getYear();
+        this.day = local_time.getDayOfMonth();
     }
     public EvaluateCalendar(int year, int month, int day){
         this.year = year;

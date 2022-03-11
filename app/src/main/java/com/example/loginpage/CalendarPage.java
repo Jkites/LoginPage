@@ -1,9 +1,11 @@
 package com.example.loginpage;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +13,7 @@ import android.widget.CalendarView;
 
 import com.google.android.material.snackbar.Snackbar;
 
+@RequiresApi(api = Build.VERSION_CODES.O) //api level 26 required
 public class CalendarPage extends AppCompatActivity {
 
     CalendarView calendarView;
@@ -24,12 +27,11 @@ public class CalendarPage extends AppCompatActivity {
 
         View activity2_layout = findViewById(R.id.activity_calendar);
         Snackbar.make(activity2_layout, "Logged In", Snackbar.LENGTH_SHORT).show();
-
+        //defining UI objects
         calendarView = findViewById(R.id.calendarView);
         button = findViewById(R.id.date_button);
-
-        //updateDate(time.get); how to get current date
-
+        button.setText(current_day.updateDate());
+        //OnClick on Calendar date
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
