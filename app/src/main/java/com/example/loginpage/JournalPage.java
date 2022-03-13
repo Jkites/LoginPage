@@ -1,9 +1,13 @@
 package com.example.loginpage;
 
 import static com.example.loginpage.CalendarPage.current_day;
+import static com.example.loginpage.MainActivity.dates;
+import static com.example.loginpage.MainActivity.descriptions;
+import static com.example.loginpage.MainActivity.ratings;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,14 +18,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
 
-
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class JournalPage extends AppCompatActivity {
     EditText rating;
     EditText description;
     Button saveButton;
-    ArrayList<String> descriptions = new ArrayList<String>();
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)//api level 26 required
     @Override
@@ -37,10 +40,51 @@ public class JournalPage extends AppCompatActivity {
         saveButton = findViewById(R.id.saveButton);
 
         TextView date_text = findViewById(R.id.journalDate);
-        date_text.setText(current_day.updateDate());
+        date_text.setText(current_day.toString());
+        saveButton.setOnClickListener(view -> saveText(view));
+    }
+    //check if rating is valid integer
+    private boolean is_int(String unknown_integer){
+        try {
+            int test_integer = Integer.parseInt(unknown_integer);
+        } catch (Exception NumberFormatException){
+            return false;
+        }
+        return true;
+    }
+    //check if date already exists
+    private boolean date_exists(){
+        for (int index_num=0; index_num<dates.size();index_num++){
+            if (dates.get(index_num).month==current_day.month&&dates.get(index_num).year==current_day.year&&
+                    dates.get(index_num).day==current_day.day){//checks if month, year, and day number are equal
+                Log.i("date_exists", "date in index"+dates.get(index_num).toString()); //delete logs in 60,61,78
+                Log.i("current date", "current"+current_day.toString());
+                return true;
+            }
+        }
+        return false;
+    }
+    //on click of saveButton
+    private void saveText(View view){
+        String input_rating = rating.getText().toString();
+        String input_description = rating.getText().toString();
+       if (is_int(input_rating)&&Integer.parseInt(input_rating)<=5&&Integer.parseInt(input_rating)>0) {
+           if (!input_description.isEmpty()||input_description!=null){
+               if (!date_exists()){ //date does not exist
+                   ratings.add(input_rating);
+                   descriptions.add(input_description);
+                   dates.add(current_day.newInstance(current_day));
+                   //dates.add(current_day); realize that objects, like arrays are accessed through memory, so simply adding it like this will cause it to change whenever the original object changes
+                   Log.i("updateArray",current_day.toString());
+               } else {
+                   Snackbar.make(view, "Date already exists!", Snackbar.LENGTH_SHORT).show();
+               }
+           } else {
+               Snackbar.make(view, "Error in description text", Snackbar.LENGTH_SHORT).show();
+           }
+       } else {
+           Snackbar.make(view, "Error in rating number", Snackbar.LENGTH_SHORT).show();
+       }
     }
 
-    private void saveText(){
-
-    }
 }

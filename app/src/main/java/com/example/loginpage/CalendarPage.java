@@ -30,21 +30,18 @@ public class CalendarPage extends AppCompatActivity {
         //defining UI objects
         calendarView = findViewById(R.id.calendarView);
         button = findViewById(R.id.date_button);
-        button.setText(current_day.updateDate());
+        button.setText(current_day.toString());
         //OnClick on Calendar date
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 current_day.updateEvaluateCalendar(year, month, day);
-                button.setText(current_day.updateDate());
+                button.setText(current_day.toString());
             }
         });
-        button.setOnClickListener(view -> evaluateOpeningActivity3(view));
+        button.setOnClickListener(view -> openActivity3(view));
     }
-    private void evaluateOpeningActivity3(View view){
-        openActivity3();
-    }
-    private void openActivity3(){
+    private void openActivity3(View view){
         Intent intent = new Intent(this, JournalPage.class);
         startActivity(intent);
     }

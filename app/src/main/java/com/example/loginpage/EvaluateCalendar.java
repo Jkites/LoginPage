@@ -35,7 +35,11 @@ public class EvaluateCalendar {
                 "August","September","October","November","December"};
         return months[month];
     }
-    public String updateDate(){
+
+    public static EvaluateCalendar newInstance(EvaluateCalendar evaluateCalendar){ //copy constructor to make new object
+        return new EvaluateCalendar(evaluateCalendar.year, evaluateCalendar.month, evaluateCalendar.day);
+    }
+    public String toString(){
         String date_str = "Edit "+getMonthName(month)+" "+day+", "+year;
         return date_str;
     }
