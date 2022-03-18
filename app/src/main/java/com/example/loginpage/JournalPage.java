@@ -1,9 +1,9 @@
 package com.example.loginpage;
 
 import static com.example.loginpage.CalendarPage.current_day;
-import static com.example.loginpage.MainActivity.dates;
-import static com.example.loginpage.MainActivity.descriptions;
-import static com.example.loginpage.MainActivity.ratings;
+import static com.example.loginpage.CalendarPage.dates;
+import static com.example.loginpage.CalendarPage.descriptions;
+import static com.example.loginpage.CalendarPage.ratings;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -91,7 +91,7 @@ public class JournalPage extends AppCompatActivity {
                    Snackbar.make(view, "Entry successfully saved", Snackbar.LENGTH_SHORT).show();
                    //dates.add(current_day); realize that objects, like arrays are accessed through memory, so simply adding it like this will cause it to change whenever the original object changes
                    Log.i("updateArray",current_day.toString());
-               } else {
+               } else { //date already exists
                    for (int index_num=0; index_num<dates.size();index_num++) {
                        if (dates.get(index_num).month == current_day.month && dates.get(index_num).year == current_day.year &&
                                dates.get(index_num).day == current_day.day) {

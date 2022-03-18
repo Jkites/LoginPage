@@ -19,10 +19,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private Button button;
 
-    public static ArrayList<String> ratings = new ArrayList<String>(); //cant be primitive
-    public static ArrayList<String> descriptions = new ArrayList<String>();
-    public static ArrayList<EvaluateCalendar> dates = new ArrayList<EvaluateCalendar>();
-
     @RequiresApi(api = Build.VERSION_CODES.O)//api level 26 required
     @Override
     protected void onCreate(Bundle savedInstanceState) {
