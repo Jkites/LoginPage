@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_journal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#16131B">
 
     <TextView
         android:id="@+id/journalDate"
@@ -23,9 +24,11 @@
         android:id="@+id/editTextRating"
         android:layout_width="127dp"
         android:layout_height="60dp"
+        android:backgroundTint="@color/light_blue"
         android:ems="10"
         android:hint="Rating"
         android:inputType="number"
+        android:textColorHint="@color/light_blue"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,10 +40,12 @@
         android:id="@+id/editTextDescription"
         android:layout_width="0dp"
         android:layout_height="53dp"
+        android:backgroundTint="@color/light_blue"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Talk about your day"
         android:inputType="textMultiLine"
+        android:textColorHint="@color/light_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

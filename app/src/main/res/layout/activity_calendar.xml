@@ -5,6 +5,7 @@
     android:id="@+id/activity_calendar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#16131B"
     tools:context=".CalendarPage">
 
     <TextView
@@ -25,7 +26,11 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="355dp" />
+        android:layout_height="355dp"
+        android:background="#002196F3"
+        android:dateTextAppearance="@style/Theme.LoginPage"
+
+        android:weekDayTextAppearance="@style/Theme.LoginPage" />
 
     <Button
         android:id="@+id/date_button"

@@ -14,8 +14,6 @@ import android.widget.EditText;
 
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
     private Button button;
 
